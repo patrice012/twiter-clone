@@ -1,0 +1,23 @@
+main {
+  max-width: 100vw;
+  height: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.left--section {
+  border: 1px solid red;
+}
+
+.right--section {
+  border: 1px solid blue;
+}
+
+.section__fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  inline-size: 100%;
+  max-inline-size: -moz-fit-content;
+  max-inline-size: fit-content;
+}/*# sourceMappingURL=index.css.map */

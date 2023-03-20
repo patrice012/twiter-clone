@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'scss/main.css' %}">
+    {% include '_csslink.html' %}
+    <title>
+        {% block title %}
+            Auth
+        {% endblock title %}
+            
+    </title>
+    {{ form.media }}
+</head>
+<body class="auth">
+{% block content %}
+    
+{% endblock content %}
+    
+
+<script src="{% static 'js/auth.js' %}"></script>
+
+</body>
+</html>

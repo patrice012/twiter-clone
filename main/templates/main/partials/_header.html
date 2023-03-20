@@ -1,0 +1,54 @@
+{% load static %}
+
+<header>
+        <div class="cover boxHeight">
+          <img
+            class="coverPicture"
+            src="{% static 'img/adrien-olichon.jpg' %}"
+            alt=""
+          />
+        </div>
+
+        <div class="profile">
+            <img
+                class="profilePicture"
+                src="{% static 'img/dom-hill.jpg' %}"
+                alt=""
+            />
+            <div>
+                <button class="primaryBtn roundCorener">Tweet</button>
+            </div>
+        </div>
+
+        <div class="userInfo">
+          <h3 class="follow_user">Username</h3>
+          <h5 class="follow_email">@username</h5>
+        </div>
+        <p class="follow_email">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi,
+          eum.
+        </p>
+        <div class="userContact">
+          <div>
+            <i class="fa fa-location"></i>
+            <h6>Everywhere</h6>
+          </div>
+          <div>
+            <i class="fa fa-link"></i>
+            <h6><a href="#">Username.com</a></h6>
+          </div>
+          <div>
+            <i class="fa fa-calendar-alt"></i>
+            <h6>Date of birth: March 21</h6>
+          </div>
+          <div>
+            <i class="fa fa-calendar"></i>
+            <h6>Joined May 8 of 2012</h6>
+          </div>
+        </div>
+
+        <div class="userFollow">
+          <h5><span class="boldText">560</span>Following</h5>
+          <h5><span class="boldText">60,5 M</span>Followers</h5>
+        </div>
+      </header>

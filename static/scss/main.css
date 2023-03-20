@@ -1,0 +1,593 @@
+/* I am using the em unit for breakpoints
+ * The calculation is the following
+ * screen size divided by browser base font size
+ * As an example: a breakpoint at 980px
+ * 980px / 16px = 61.25em
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+li,
+ul {
+  list-style: none;
+}
+
+img {
+  width: 100%;
+}
+
+i {
+  margin-inline-end: 7px;
+}
+
+.btn {
+  background-color: #00a0f0;
+  color: #ffffff;
+  padding: 0.77em 1em;
+  margin-block-start: 1em;
+  width: 100%;
+  font-size: clamp(0.7rem, 0.6em + 3vw, 1rem);
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0px 2px 6px 6px #d8d9dd;
+  text-align: center;
+  text-transform: capitalize;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+}
+
+.btn:hover {
+  background-color: #00d8fb;
+  transition: all 0.5s ease;
+}
+
+button {
+  width: fit-content;
+  font-size: clamp(0.7rem, 0.6em + 3vw, 1rem);
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0px 2px 6px 6px #d8d9dd;
+  text-align: center;
+  text-transform: capitalize;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+}
+
+.auth {
+  background-image: url("../img/blue_bg.jpg");
+  background-color: #606060;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: soft-light;
+  min-height: 96vh;
+  min-width: 98vw;
+}
+
+@media screen and (min-width: 780px) {
+  .auth {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+  }
+}
+.info {
+  color: #ffffff;
+  text-align: center;
+}
+.info h1 {
+  font-size: clamp(0.8rem, 0.8em + 6vw, 2.5rem);
+  margin-block-end: 1.5rem;
+}
+.info p {
+  font-size: clamp(0.8rem, 0.8em + 3vw, 1.2rem);
+}
+
+.form--container {
+  border-radius: 8px;
+  height: fit-content;
+  box-shadow: 0.1px 20px 6px 1px #33363d;
+  background-color: #ffffff;
+  width: 77%;
+  max-width: 550px;
+  margin-inline: auto;
+  margin-block: auto;
+  padding-block: 1.5rem 2.5em;
+  padding-inline: 2em;
+}
+
+@media screen and (max-width: 780px) {
+  .info, .form--container {
+    margin-block-start: 4rem;
+  }
+}
+.form, .field--container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: start;
+  width: 100%;
+}
+
+.form__field {
+  margin-block: 0.8em;
+  width: 100%;
+  position: relative;
+}
+
+.lockPwd {
+  position: absolute;
+  right: 10px;
+  top: 53%;
+  cursor: pointer;
+  border-radius: 66%;
+  background-color: #00a0f0;
+  color: #ffffff;
+  padding: 5px 7px;
+  font-size: 13px;
+}
+
+.form input:not(.submit) {
+  display: block;
+  width: 100%;
+  height: 33px;
+  padding-inline: 0.5em;
+  border-radius: 4px;
+  background-color: #ffffff;
+  border: 1px solid;
+  font-size: clamp(0.7rem, 0.6em + 2vw, 1rem);
+}
+
+.form label {
+  font-size: clamp(0.7rem, 0.6em + 3vw, 1.1rem);
+  margin-block-end: 0.4rem;
+  display: block;
+}
+
+.form--action {
+  margin-block: 1.8em 0rem;
+}
+.form--action * {
+  margin-inline: 0.6em;
+}
+
+@media screen and (max-width: 780px) {
+  .resetPassword {
+    margin-block: 3em;
+  }
+}
+.form--container .title {
+  margin-block-end: 1.6rem;
+}
+
+.form--container .detail {
+  line-height: 1.5rem;
+}
+
+.imgBg {
+  background-image: url("../img/blue_bg.jpg");
+  background-color: #606060;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: soft-light;
+}
+
+.coverVP {
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+.centerBlock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  background-color: #ffffff;
+  inline-size: min(80vw, 290px + 17vw);
+  min-height: 80vh;
+  border-radius: 20px;
+  padding: calc(1rem + 1.3vh) calc(1rem + 1vw);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.card__body > div * {
+  margin-block: 0.8vh;
+}
+.card__body > p {
+  margin-block-start: 2rem;
+  line-height: 1.5rem;
+}
+.card__footer > * {
+  padding-inline-end: 2rem;
+}
+
+@media screen and (max-width: 780px) {
+  .card__body > * {
+    margin-block: 2vh;
+  }
+}
+@media screen and (min-width: 780px) {
+  .card__body > div {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.profilePicture {
+  width: 140px;
+  max-width: 100%;
+  height: 135px;
+  border-radius: 66%;
+  object-fit: cover;
+}
+
+.bio {
+  line-height: 1.5rem;
+}
+
+input[type=file] {
+  width: 100%;
+}
+
+div.form__field > a[href^="/media/"] ~ * ~ :is(br, input) {
+  display: none;
+}
+
+div.form__field > a[href^="/media/"] ~ label {
+  display: inline;
+}
+
+.selecteMedia {
+  display: block;
+  width: 100%;
+  border-radius: 4px;
+  padding-block: min(10px, 1.4vw);
+  color: #ffffff;
+  background-color: #00a0f0;
+  text-align: center;
+  cursor: pointer;
+}
+
+.selecteMedia:hover {
+  background-color: #00d8fb;
+}
+
+.none {
+  display: none;
+}
+
+div.form__field input[type=checkbox] {
+  display: inline;
+  width: fit-content;
+  margin: 0.4rem;
+  block-size: 17px;
+  inline-size: 22px;
+  accent-color: #00a0f0;
+}
+
+.fullScreen {
+  width: 100%;
+  max-width: 100vw;
+  height: auto;
+  max-height: max-content;
+  padding: min(4vw, 2rem);
+}
+
+.squareCard {
+  max-width: 100px;
+}
+
+.grid--container {
+  width: 100%;
+}
+
+.tox-tinymce {
+  min-height: 100%;
+}
+
+@media screen and (min-width: 1060px) {
+  .grid--container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: inherit;
+    column-gap: 3rem;
+  }
+}
+main.index {
+  max-width: 100vw;
+  height: auto;
+  display: grid;
+  grid-template-columns: 23vw 1fr 35vw;
+}
+
+.right--section .section__fixed {
+  width: 30vw;
+}
+
+.left--section .section__fixed {
+  width: 23vw;
+  padding-inline: 3.5rem;
+}
+
+.left--section > .centerEle {
+  flex-direction: column;
+  align-items: first baseline;
+}
+
+button.primaryBtn {
+  padding: 0.5rem 4rem;
+}
+
+.left--section i {
+  color: #00a0f0;
+  margin-inline-end: 0.8em;
+  font-size: 1.1em;
+}
+
+.centerEle {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: normal;
+  flex-wrap: wrap;
+}
+
+.inlineLinks {
+  display: flex;
+  flex-direction: row;
+  justify-content: normal;
+  align-items: center;
+  flex-wrap: wrap;
+  cursor: pointer;
+  transition: all 0.3s ease-in 0s;
+}
+
+.inlineLinks:is(:hover, :active, :focus) {
+  color: #00a0f0;
+  transition: all 0.3s ease-in 0s;
+}
+
+.inlineLinks h5 {
+  font-size: clamp(0.8rem, 0.7em + 2vw, 1rem);
+}
+
+.fullContain {
+  padding: 1rem 2rem;
+}
+
+.section__fixed {
+  position: fixed;
+  max-width: 32%;
+}
+
+.fullHeight {
+  max-width: 100%;
+  height: 100vh;
+  overflow-block: auto;
+  -ms-scroll-snap-type: block mandatory;
+  scroll-snap-type: block mandatory;
+  scroll-behavior: smooth;
+  padding-inline: 1rem;
+}
+
+.flexDisplay {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.section__fixed .container > * {
+  margin-block: 2rem;
+}
+
+.search--container {
+  width: 100%;
+}
+.search--container input {
+  width: inherit;
+  background-color: #dfe0e4;
+  border-radius: 1rem;
+  padding-inline: 1rem;
+  height: 2.5rem;
+  position: relative;
+  font-size: clamp(0.9rem, 8em + 2vw, 1.1rem);
+  border: none;
+}
+.search--container input:focus ~ i {
+  display: none;
+  transition: all 0.2s ease-in 0s;
+}
+.search--container input:focus {
+  outline: none;
+  border: 1.8px solid #00a0f0;
+}
+
+input.search::placeholder {
+  margin-inline-start: 10px;
+  text-align: center;
+}
+
+.search ~ i {
+  position: relative;
+  bottom: 27px;
+  left: 13px;
+  font-size: 1rem;
+}
+
+.imgCard {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+.imgCard > img {
+  width: 100%;
+  height: auto;
+  max-height: 160px;
+}
+.imgCard > img:nth-child(1) {
+  border-top-left-radius: calc(1rem + 1vw);
+}
+.imgCard > img:nth-child(3) {
+  border-top-right-radius: calc(1rem + 1vw);
+}
+.imgCard > img:nth-child(4) {
+  border-bottom-left-radius: calc(1rem + 1vw);
+}
+.imgCard > img:nth-child(6) {
+  border-bottom-right-radius: calc(1rem + 1vw);
+}
+
+.followCard {
+  width: 100%;
+  max-width: 100%;
+  background-color: #dfe0e4;
+  padding: 0.5rem 1.5rem;
+  border-radius: 1rem;
+}
+
+.followCard > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: normal;
+  flex-wrap: nowrap;
+  width: 100%;
+  margin-block: 1rem;
+}
+.followCard > div img {
+  width: 50px;
+  height: 50px;
+  border-radius: 66%;
+}
+
+.follow_user {
+  font-size: clamp(0.8rem, 0.9em + 3vw, 1.3rem);
+}
+
+.follow_email {
+  font-size: clamp(0.8rem, 0.6em + 2vw, 1rem);
+  font-weight: 380;
+}
+
+.roundCorener {
+  border-radius: 1.5rem;
+}
+
+.followCard button.primaryBtn {
+  padding-inline: 1.6rem;
+  height: 2.2rem;
+}
+
+.primaryBtn {
+  color: #ffffff;
+  background-color: #001321;
+  transition: all 0.3s ease-in 0s;
+}
+
+.primaryBtn:hover {
+  background-color: #ffffff;
+  border: 1.8px solid #00a0f0;
+  color: #00a0f0;
+  transition: all 0.3s ease-in 0s;
+}
+
+.news > div:first-child {
+  flex-direction: row;
+}
+
+.news > div {
+  flex-direction: column;
+}
+
+.coverPicture {
+  height: 230px;
+  width: 100%;
+}
+
+div.profile {
+  margin-block-start: -64px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-inline: 2rem;
+}
+
+.profile .primaryBtn {
+  position: relative;
+  top: 1.2em;
+}
+
+.profilePicture {
+  object-position: top;
+  object-fit: cover;
+}
+
+.userInfo {
+  margin-block: 1rem;
+}
+
+.userContact {
+  margin-block: 1.3rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.userContact > div {
+  margin-block: 0.3rem;
+  margin-inline-end: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.userContact > div > h6 {
+  font-size: 0.9rem;
+}
+
+.userFollow > h5 {
+  display: inline;
+  margin-block: 0.3rem;
+  margin-inline-end: 1rem;
+  font-size: 0.9rem;
+}
+.userFollow > h5 > span {
+  font-weight: 800;
+  font-size: 0.99999rem;
+  color: initial;
+  margin-inline-end: 0.5em;
+}
+
+.userContact h6,
+.userFollow h5 {
+  color: #426372;
+  font-weight: 420;
+  transition: all 0.3s ease-in 0s;
+}
+.userContact h6:hover,
+.userFollow h5:hover {
+  color: #00a0f0;
+  transition: all 0.3s ease-in 0s;
+}
+
+/*# sourceMappingURL=main.css.map */

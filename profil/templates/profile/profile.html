@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+
+
+{% block content %}
+
+<div data-bg="{{profile.cover_picture_url}}" class="centerBlock imgBg coverVP">
+    <main class="card">
+        <div class="card__header">
+            <img class="card__img profilePicture" src="{{profile.profile_picture_url}}" alt="">
+        </div>
+        <div class="card__body">
+            <div>
+                <h3><i class="fa fa-user"></i>{{profile.profile_name}}</h3>
+                <h3><i class="fa fa-mail-bulk"></i>{{profile.email}}</h3>
+            </div>
+            <div>
+                <h3><i class="fa fa-location"></i>{{profile.location}}</h3>
+                <h3><i class="fa fa-book"></i>{{profile.career}}</>
+            </div>
+            <p>
+                <h4><i class="fa fa-book-bookmark"></i> Bio</h4>
+                <span class="bio">{{profile.bio|truncatewords:30}}</span>
+                <span class="bio">{{profile.about|truncatewords:30|safe}}</span>
+            </p>
+        </div>
+        <div class="card__footer">
+            {% for s_link in profile.social_links.all %}
+                <a href="{{s_link.link}}">{{s_link.link_name}}</a>
+            {% endfor %}
+                
+        </div>
+
+        <a class="btn" href="{% url 'update' profile.id %}">Update</a>
+    </main>
+</div>
+{% endblock content %}
+    

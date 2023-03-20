@@ -1,0 +1,27 @@
+{% extends 'auth/base.html' %}
+{% load auth_tags %}
+
+
+{% block content %}
+
+<section class="info">
+    <h1>Let's Sign in</h1>
+    <p>Welcome back. You've missed!</p>
+</section>
+
+    <main class='form--container'>
+        <!-- <h1>Sign in</h1> -->
+        <form class='form' method="post" action="{% url 'register' %}">
+            {% csrf_token %}
+            {% dj_form %}
+            <input class='btn submit' type="submit" value="register">
+            <input type="hidden" name="next" value="{{ next }}">
+        </form>
+
+        <div class="form--action">
+            {# Assumes you setup the log in view in your URLconf #}
+            <p>Already have an account?<a href="{% url 'login' %}">Login</a></p>
+        </div>
+        
+    </main>
+{% endblock content %}

@@ -1,0 +1,44 @@
+{% extends 'auth/base.html' %}
+{% load auth_tags %}
+{% block content %}
+
+<section class="info">
+    <h1>Let's Log in</h1>
+    <p>Welcome back. You've missed!</p>
+</section>
+
+<main class='form--container'>
+    <!-- <h1>Login</h1> -->
+    {% if form.errors %}
+    <p>Your username and password didn't match. Please try again.</p>
+    {% endif %}
+    
+    {% if next %}
+    {% if user.is_authenticated %}
+    <p>Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+    {% else %}
+    <p>Please login to see this page.</p>
+    {% endif %}
+    {% endif %}
+    <form class='form' method="POST" action="{% url 'login' %}">
+        {% csrf_token %}
+        {% dj_form %}
+
+        <input class='btn submit' type="submit" value="login">
+        <input type="hidden" name="next" value="{{ next }}">
+    </form>
+
+    <div class="form--action">
+        {# Assumes you setup the password_reset view in your URLconf #}
+        <p>Lost password?<a href="{% url 'password_reset' %}">Reset</a></p>
+
+        {# Assumes you setup the sign in view in your URLconf #}
+        <p>Don't have account?<a class="form__link" href="{% url 'register' %}">Sign in</a></p>
+    </div>
+    
+</main>
+
+
+
+{% endblock %}

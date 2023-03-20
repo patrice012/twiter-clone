@@ -1,0 +1,123 @@
+
+.auth {
+    background-image: url('../img/blue_bg.jpg');
+    background-color: #606060;;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: soft-light;
+    min-height: 96vh;
+    min-width: 98vw;
+    
+}
+
+
+@media screen and (min-width:780px) {
+    .auth {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+    }
+}
+
+.info {
+    color: $text_color;
+    text-align: center;
+
+    & h1 {
+        font-size: clamp(.8rem, .8em + 6vw, 2.5rem);
+        margin-block-end: 1.5rem;
+    }
+
+    & p {
+        font-size: clamp(0.8rem, 0.8em + 3vw, 1.2rem);
+    }
+}
+
+.form--container {
+    // border: 1px solid;
+    border-radius: 8px;
+    height: fit-content;
+    box-shadow: 0.1px 20px 6px 1px #33363d;
+    background-color: $text_color;
+    width: 77%;
+    max-width: 550px;
+    margin-inline: auto;
+    margin-block: auto;
+    padding-block: 1.5rem 2.5em;
+    padding-inline: 2em;
+}
+
+@media screen and (max-width:780px) {
+    .info, .form--container {
+        margin-block-start: 4rem;
+    }
+}
+
+.form, .field--container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    width: 100%;
+}
+
+.form__field {
+    margin-block: .8em;
+    width: 100%;
+    position: relative;
+}
+
+.lockPwd {
+    position: absolute;
+    right: 10px;
+    top: 53%;
+    cursor: pointer;
+    border-radius: 66%;
+    background-color: $blue_light;
+    color: $text_color;
+    padding: 5px 7px;
+    font-size: 13px;
+}
+
+.form input:not(.submit) {
+    display: block;
+    width: 100%;
+    height: 33px;
+    padding-inline: .5em;
+    border-radius: 4px;
+    background-color: $text_color;
+    border: 1px solid;
+    font-size: clamp(0.7rem, 0.6em + 2vw, 1rem);;
+}
+.form label {
+    font-size: clamp(0.7rem, 0.6em + 3vw, 1.1rem);
+    margin-block-end: 0.4rem;
+    display: block;
+
+}
+
+.form--action {
+    margin-block: 1.8em 0rem;
+
+    & * {
+        margin-inline: .6em;
+    }
+}
+
+@media screen and (max-width:780px) {
+    .resetPassword{
+        margin-block: 3em;
+    }
+}
+
+.form--container .title {
+    margin-block-end: 1.6rem;
+}
+
+.form--container .detail {
+    line-height:1.5rem;
+}
+
+
+

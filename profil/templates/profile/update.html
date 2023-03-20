@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+
+{% block content %}
+<main class='form--container fullScreen'>
+    <form action="" method="POST" class='form' enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="grid--container">
+            <div class="field--container">
+                <div class='form__field'>
+                    {{form.email.label_tag}}
+                    {{form.email}}
+                    <span class='form--error'>{{form.email.errors}}</span>
+                </div>
+
+                <div class='form__field'>
+                    {{form.profile_name.label_tag}}
+                    {{form.profile_name}}
+                    <!-- <img src="" alt=""> -->
+                    <span class='form--error'>{{form.profile_name.errors}}</span>
+                </div>
+
+                <div class='form__field'>
+                    {{form.profile_picture.label_tag}}
+                    {{form.profile_picture}}
+
+                    {% if profile.profile_picture_url %}
+                        <img class="squareCard" src="{% thumbnail profile.profile_picture 55x0 quality=100 %}" alt="">
+                    {% endif %}
+                    
+                    <span class='form--error'>{{form.profile_picture.errors}}</span>
+                </div>
+
+
+                <div class='form__field'>
+                    {{form.cover_picture.label_tag}}
+                    {{form.cover_picture}}
+                    {% if profile.cover_picture_url %}
+                        <img class="squareCard" src="{% thumbnail profile.cover_picture 55x0 quality=100 %}" alt="">
+                    {% endif %}
+                    <span class='form--error'>{{form.cover_picture.errors}}</span>
+                </div>
+
+                <div class='form__field'>
+                    {{form.location.label_tag}}
+                    {{form.location}}
+                    <span class='form--error'>{{form.location.errors}}</span>
+                </div>
+
+                <div class='form__field'>
+                    {{form.career.label_tag}}
+                    {{form.career}}
+                    <span class='form--error'>{{form.career.errors}}</span>
+                </div>
+            </div>
+
+            <div class="field--container">
+                <div class='form__field'>
+                    {{form.about.label_tag}}
+                    {{form.about}}
+                    <span class='form--error'>{{form.about.errors}}</span>
+                </div>
+            </div>
+        </div>
+
+        <input class='btn submit' type="submit" value="Update">
+        <input type="hidden" name="next" value="{{ next }}">
+    </form>
+</main>
+
+{% endblock %}
+
+
+

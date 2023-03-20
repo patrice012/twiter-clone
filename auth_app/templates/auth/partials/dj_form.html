@@ -1,0 +1,12 @@
+
+
+<div class="field--container">
+    {% for field in form %}
+        <div class='form__field'>
+            {{field.label_tag}}
+            {{field}}
+            <i class="lockPwd fa fa-lock"></i>
+            <span class='form--error'>{{field.errors}}</span>
+        </div>
+    {% endfor %}
+</div>

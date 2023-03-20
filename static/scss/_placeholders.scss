@@ -1,0 +1,17 @@
+
+//  @extends + le nom du placeholder
+// ici c'est @extend %flex-center
+
+
+%flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+//  transition
+
+%transition-ease-in {
+  transition: all .3s ease-in;
+}
