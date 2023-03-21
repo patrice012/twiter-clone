@@ -337,6 +337,10 @@ button.primaryBtn {
   font-size: 1.1em;
 }
 
+i.fa-bold {
+  font-size: 1.8rem;
+}
+
 .centerEle {
   display: flex;
   flex-direction: row;
@@ -364,6 +368,19 @@ button.primaryBtn {
   font-size: clamp(0.8rem, 0.7em + 2vw, 1rem);
 }
 
+div.inlineLinks {
+  margin: unset;
+  margin-block: 2rem;
+}
+
+.search--container {
+  margin-block-start: 1rem;
+}
+
+.imgCard, .followCard {
+  margin-block: 1.5rem;
+}
+
 .fullContain {
   padding: 1rem 2rem;
 }
@@ -389,10 +406,6 @@ button.primaryBtn {
   justify-content: space-between;
   align-items: center;
   flex-wrap: nowrap;
-}
-
-.section__fixed .container > * {
-  margin-block: 2rem;
 }
 
 .search--container {
@@ -477,11 +490,12 @@ input.search::placeholder {
 }
 
 .follow_user {
-  font-size: clamp(0.8rem, 0.9em + 3vw, 1.3rem);
+  font-size: clamp(0.8rem, 0.9em + 3vw, 1.18rem);
+  font-weight: 500;
 }
 
 .follow_email {
-  font-size: clamp(0.8rem, 0.6em + 2vw, 1rem);
+  font-size: clamp(0.8rem, 0.6em + 2vw, 0.99rem);
   font-weight: 380;
 }
 
@@ -516,8 +530,10 @@ input.search::placeholder {
 }
 
 .coverPicture {
-  height: 230px;
+  height: 340px;
   width: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 div.profile {
@@ -588,6 +604,114 @@ div.profile {
 .userFollow h5:hover {
   color: #00a0f0;
   transition: all 0.3s ease-in 0s;
+}
+
+.tweet-nav {
+  margin-block: 2rem 4rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+.tweet-nav:after {
+  content: "";
+  position: absolute;
+  background-color: #426372;
+  width: 100%;
+  height: 1.8px;
+  bottom: -20px;
+}
+.tweet-nav h3 * {
+  font-size: clamp(0.7rem, 1vw + 6em, 1rem);
+  color: #426372;
+  transition: all 0.3s ease-in 0s;
+  position: relative;
+}
+.tweet-nav h3 *:is(:hover, :focus, :active):after {
+  content: "";
+  position: absolute;
+  background-color: #00a0f0;
+  width: 100%;
+  height: 2.8px;
+  bottom: -20px;
+  left: 0;
+  z-index: 9;
+  transition: all 0.3s ease-in 0s;
+}
+.tweet-nav h3 *:hover {
+  color: #00a0f0;
+  transition: all 0.3s ease-in 0s;
+}
+
+.tweet--container {
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  padding-block: 1rem;
+  padding-inline: 1rem 5rem;
+}
+
+.user--img {
+  width: 100%;
+}
+.user--img img {
+  border-radius: 66%;
+  width: 50px;
+  height: 50px;
+}
+
+.tweet {
+  padding-inline-start: 1rem;
+}
+
+.tweet > * {
+  margin-block-end: 1rem;
+}
+
+.tweet-img img {
+  height: 300px;
+  object-fit: fill;
+  object-position: center;
+  border-radius: 1rem;
+}
+
+.tweet-trends {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.tweet-trends > .action {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  cursor: pointer;
+  transition: all 0.3s ease-in 0s;
+}
+.tweet-trends > .action:is(:hover, :active) {
+  color: #00a0f0;
+  transition: all 0.3s ease-in 0s;
+}
+
+.tweet-trends .action,
+.user-info > :is(.follow_email, .tweet-date) {
+  color: #426372;
+  font-size: 0.9rem;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.user-info > * {
+  margin-inline-end: 1rem;
 }
 
 /*# sourceMappingURL=main.css.map */

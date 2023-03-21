@@ -118,6 +118,17 @@
       
       {% include 'main/partials/_header.html' %}
     </div>
+
+    <section class="tweets--container">
+      <div class="tweet-nav">
+        <h3><a href="#">Tweets</a></h3>
+        <h3><a href="#">Tweets and replies</a></h3>
+        <h3><a href="#">Multimedia</a></h3>
+        <h3><a href="#">Likes</a></h3>
+      </div>
+      {% include 'main/partials/_tweets.html' %}
+    </section>
+
   </section>
 
   <aside class="rigth--section centerEle">
@@ -196,6 +207,7 @@
       </div>
     </div>
   </aside>
+
 </main>
 
 {% endblock content %}
