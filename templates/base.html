@@ -8,7 +8,10 @@
     <link rel="stylesheet" href="{% static 'scss/main.css' %}">
     <!-- <link rel="stylesheet" href="{% static 'static/css/webfonts/' %}"> -->
 
+    <!-- custom css links -->
     {% include '_csslink.html' %}
+
+    <!-- TinyMCE widget assets -->
     {{ form.media }}
     <title>
         {% block title %}
@@ -26,6 +29,6 @@
 {% endblock content %}
     
 <script src="{% static 'js/profil.js' %}"></script>
-
+<script src="{% static 'js/htmx.min.js' %}"></script>
 </body>
 </html>

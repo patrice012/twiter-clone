@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+
+{% block content %}
+<main class=''>
+    <form action="" method="POST" class='form create-tweet' enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="">
+            <div class="field--container">
+
+                <div class='form__field'>
+                    {{form.content.label_tag}}
+                    <!-- {{form.content}} -->
+                    
+                    <div
+                        class=" contenteditable"
+                        name="create_tweet"
+                        id="tweet_content"
+                        aria-placeholder="tweet content"
+                        contenteditable="true"
+                        ></div>
+
+                    </div>
+                    <span class='form--error'>{{form.content.errors}}</span>
+                </div>
+
+                <!-- <div class='form__field'>
+                    {{form.location.label_tag}}
+                    {{form.location}}
+                    <span class='form--error'>{{form.location.errors}}</span>
+                </div> -->
+            </div>
+
+            <div class="field--container">
+                
+
+                <div class='form__field'>
+                    {{form.tweet_picture.label_tag}}
+                    {{form.tweet_picture}}
+
+                    <!-- {% if profile.profile_picture_url %}
+                        <img class="squareCard" src="{% thumbnail profile.profile_picture 55x0 quality=100 %}" alt="">
+                    {% endif %} -->
+                    
+                    <span class='form--error'>{{form.tweet_picture.errors}}</span>
+                </div>
+
+            </div>
+        </div>
+
+        <input class='btn submit' type="submit" value="tweet">
+        <input type="hidden" name="next" value="{{ next }}">
+    </form>
+</main>
+
+<script src="{% static 'js/tweet.js' %}"></script>
+
+{% endblock %}
+
+
+

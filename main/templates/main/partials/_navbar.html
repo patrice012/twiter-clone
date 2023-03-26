@@ -44,7 +44,10 @@
         <h5>More</h5>
     </div>
 
-    <button class="primaryBtn roundCorener">Tweet</button>
+    <button hx-get="{% url 'create_tweet' %}"
+            hx-target="#main-header"
+            hx-swap="outerHTML"
+            class="primaryBtn roundCorener">Tweet</button>
 </div>
 
 <!-- <div class="userInfo">

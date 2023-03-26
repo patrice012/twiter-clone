@@ -6,7 +6,7 @@ from django.utils.translation import gettext_lazy as _
 from tinymce.models import HTMLField
 from django.contrib.auth import get_user_model
 
-from .utils import user_diresctory
+from core.utils import user_diresctory
 
 
 User = settings.AUTH_USER_MODEL

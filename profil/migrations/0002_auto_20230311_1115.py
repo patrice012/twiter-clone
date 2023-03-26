@@ -3,7 +3,7 @@
 from django.conf import settings
 from django.db import migrations, models
 import django.db.models.deletion
-import profil.utils
+import core.utils
 import tinymce.models
 
 
@@ -21,8 +21,8 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('email', models.EmailField(max_length=254, null=True)),
                 ('profile_name', models.CharField(blank=True, max_length=50, null=True, verbose_name='Profile name')),
-                ('profile_picture', models.ImageField(blank=True, null=True, upload_to=profil.utils.user_diresctory, verbose_name='Picture')),
-                ('cover_picture', models.ImageField(blank=True, null=True, upload_to=profil.utils.user_diresctory, verbose_name='Cover picture')),
+                ('profile_picture', models.ImageField(blank=True, null=True, upload_to=core.utils.user_diresctory, verbose_name='Picture')),
+                ('cover_picture', models.ImageField(blank=True, null=True, upload_to=core.utils.user_diresctory, verbose_name='Cover picture')),
                 ('bio', models.TextField(blank=True, null=True, verbose_name='Say more about you.')),
                 ('about', tinymce.models.HTMLField()),
                 ('location', models.CharField(max_length=50, verbose_name='Your current location')),

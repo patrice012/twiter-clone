@@ -2,59 +2,6 @@
 <main class="index">
   <aside class="left--section">
     <div class="section__fixed centerEle fullHeight">
-      <!-- <div class="container">
-        <div class="inlineLinks">
-          <i class="fa fa-fly"></i>
-          <h5></h5>
-        </div>
-
-        <div class="inlineLinks">
-          <i class="fa fa-home-user"></i>
-          <h5>Home</h5>
-        </div>
-
-        <div class="inlineLinks">
-          <i class="fa-regular fa-hashtag"></i>
-          <h5>Explore</h5>
-        </div>
-
-        <div class="inlineLinks">
-          <i class="fa-regular fa-note-sticky"></i>
-          <h5>Notifications</h5>
-        </div>
-
-        <div class="inlineLinks">
-          <i class="fa-regular fa-message"></i>
-          <h5>Messages</h5>
-        </div>
-
-        <div class="inlineLinks">
-          <i class="fa-regular fa-bookmark"></i>
-          <h5>Bookmarks</h5>
-        </div>
-
-        <div class="inlineLinks">
-          <i class="fa fa-list"></i>
-          <h5>Lists</h5>
-        </div>
-
-        <div class="inlineLinks">
-          <i class="fa-regular fa-user"></i>
-          <h5>Profile</h5>
-        </div>
-
-        <div class="inlineLinks">
-          <i class="fa fa-mobile"></i>
-          <h5>More</h5>
-        </div>
-
-        <button class="primaryBtn roundCorener">Tweet</button>
-      </div> 
-    
-      <div class="userInfo">
-        <h2>Username</h2>
-      </div>
-    -->
 
       {% include 'main/partials/_navbar.html' %}
       
@@ -62,60 +9,8 @@
   </aside>
 
   <section class="main--section">
-    <div class="container">
-      <!-- <header>
-        <div class="cover boxHeight">
-          <img
-            class="coverPicture"
-            src="{% static 'img/adrien-olichon.jpg' %}"
-            alt=""
-          />
-        </div>
+    <div id="main-header" class="container">
 
-        <div class="profile">
-            <img
-                class="profilePicture"
-                src="{% static 'img/dom-hill.jpg' %}"
-                alt=""
-            />
-            <div>
-                <button class="primaryBtn roundCorener">Tweet</button>
-            </div>
-        </div>
-
-        <div class="userInfo">
-          <h3 class="follow_user">Username</h3>
-          <h5 class="follow_email">@username</h5>
-        </div>
-        <p class="follow_email">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi,
-          eum.
-        </p>
-        <div class="userContact">
-          <div>
-            <i class="fa fa-location"></i>
-            <h6>Everywhere</h6>
-          </div>
-          <div>
-            <i class="fa fa-link"></i>
-            <h6><a href="#">Username.com</a></h6>
-          </div>
-          <div>
-            <i class="fa fa-calendar-alt"></i>
-            <h6>Date of birth: March 21</h6>
-          </div>
-          <div>
-            <i class="fa fa-calendar"></i>
-            <h6>Joined May 8 of 2012</h6>
-          </div>
-        </div>
-
-        <div class="userFollow">
-          <h5><span class="boldText">560</span>Following</h5>
-          <h5><span class="boldText">60,5 M</span>Followers</h5>
-        </div>
-      </header> -->
-      
       {% include 'main/partials/_header.html' %}
     </div>
 
@@ -139,70 +34,8 @@
           <i class="fa fa-search"></i>
         </div>
 
-        <!-- <div class="imgCard">
-          <img src="{% static 'img/raamin-ka.jpg' %}" alt="" />
-          <img src="{% static 'img/gabrielle-henderson.jpg' %}" alt="" />
-          <img src="{% static 'img/dom-hill.jpg' %}" alt="" />
-          <img src="{% static 'img/ehimetalor-akhere.jpg' %}" alt="" />
-          <img src="{% static 'img/ayo-ogunseinde.jpg' %}" alt="" />
-          <img src="{% static 'img/alireza-dolati.jpg' %}" alt="" />
-        </div> -->
-
         {% include 'main/partials/_new_friends.html' %}
 
-        <!-- <div class="followCard flexDisplay">
-          <div>
-            <h3>Who to follow</h3>
-            <i class="fa fa-clapperboard"></i>
-          </div>
-          <div>
-            <img src="{% static 'img/raamin-ka.jpg' %}" alt="" />
-            <div>
-              <h2 class="follow_user">Username</h2>
-              <h6 class="follow_email">@username</h6>
-            </div>
-            <button class="roundCorener primaryBtn">Follow</button>
-          </div>
-
-          <div>
-            <img src="{% static 'img/raamin-ka.jpg' %}" alt="" />
-            <div>
-              <h2 class="follow_user">Username</h2>
-              <h6 class="follow_email">@username</h6>
-            </div>
-            <button class="roundCorener primaryBtn">Follow</button>
-          </div>
-
-          <div>
-            <img src="{% static 'img/raamin-ka.jpg' %}" alt="" />
-            <div>
-              <h2 class="follow_user">Username</h2>
-              <h6 class="follow_email">@username</h6>
-            </div>
-            <button class="roundCorener primaryBtn">Follow</button>
-          </div>
-        </div>
-
-        <div class="news followCard">
-          <div>
-            <h3>Trends for you</h3>
-            <i class="fa fa-clapperboard"></i>
-          </div>
-          <div>
-            <h4>Type of news</h4>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum
-              vero sed odio ducimus, iure beatae!
-            </p>
-          </div>
-          <div>
-            <h4>Type of news</h4>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum
-              vero sed odio ducimus, iure beatae!
-            </p>
-          </div>
-        </div> -->
         {% include 'main/partials/_follow.html' %}
       </div>
     </div>
