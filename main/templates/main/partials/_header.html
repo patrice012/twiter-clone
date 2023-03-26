@@ -4,7 +4,7 @@
         <div class="cover boxHeight">
           <img
             class="coverPicture"
-            src="{% static 'img/ehimetalor-akhere.jpg' %}"
+            src="{{request.user.profile.cover_picture_url}}"
             alt=""
           />
         </div>
@@ -12,7 +12,7 @@
         <div class="profile">
             <img
                 class="profilePicture"
-                src="{% static 'img/dom-hill.jpg' %}"
+                src="{{request.user.profile.profile_picture_url}}"
                 alt=""
             />
             <div>
@@ -21,12 +21,11 @@
         </div>
 
         <div class="userInfo">
-          <h3 class="follow_user">Username</h3>
-          <h5 class="follow_email">@username</h5>
+          <h3 class="follow_user">{{request.user}}</h3>
+          <h5 class="follow_email">@{{request.user.profile}}</h5>
         </div>
         <p class="follow_email">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi,
-          eum.
+          {{request.user.profile.about|safe}}
         </p>
         <div class="userContact">
           <div>

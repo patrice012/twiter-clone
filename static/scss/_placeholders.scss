@@ -9,6 +9,10 @@
   justify-content: center;
 }
 
+%gradient-color{
+  background: radial-gradient(circle farthest-corner at top left,$blue_light_alt 10%, $blue_light);
+}
+
 
 //  transition
 

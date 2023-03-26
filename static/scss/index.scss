@@ -247,6 +247,7 @@ input.search::placeholder{
     width: 100%;
     object-fit: cover;
     object-position: center;
+    @extend %gradient-color;
 }
 
 div.profile {

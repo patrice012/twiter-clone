@@ -4,6 +4,10 @@
  * As an example: a breakpoint at 980px
  * 980px / 16px = 61.25em
 */
+.coverPicture {
+  background: radial-gradient(circle farthest-corner at top left, #00d8fb 10%, #00a0f0);
+}
+
 *,
 *::before,
 *::after {
