@@ -1,6 +1,6 @@
 form.create-tweet{
     width: 100%;
-    height: 100%;
+    // height: 100%;
     border: none;
     padding-inline: 2rem;
 }
@@ -18,7 +18,18 @@ form.create-tweet{
 
 }
 
-input#id_tweet_picture{
+input#id_tweet_picture, textarea#id_content{
     display: none;
-    
+}
+
+.tweet-field i {
+    color: $blue_light;
+}
+
+.img-preview--container {
+    margin-block: .8rem;
+
+    img {
+        border-radius: calc($raduis / 3);
+    }
 }
