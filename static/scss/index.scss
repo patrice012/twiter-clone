@@ -115,7 +115,7 @@ div.inlineLinks {
 
     & input:focus ~ i {
         display: none;
-        @include transition($time:.2s);
+        @include transition($duration:.2s);
     }
 
     & input:focus {
@@ -409,6 +409,30 @@ div.profile {
 .user-info > :is(.follow_email,.tweet-date) {
     color: $text_gray;
     font-size: .9rem;
+}
+
+// tooltip
+
+.tooltip {
+    position:relative;
+}
+
+.tooltiptext {
+    position:absolute;
+    visibility:hidden;
+    color:$text_color;
+    background-color:$tooltip_bg;
+    // border-radius:calc($raduis / 2);
+    top:20px;
+    width: max-content;
+    // border: 1px solid;
+    padding: 0.1rem 0.4rem;
+    // @include transition($delays:5s);
+}
+
+.tooltip:hover .tooltiptext{
+    visibility:visible;
+    @include transition;
 }
 
 

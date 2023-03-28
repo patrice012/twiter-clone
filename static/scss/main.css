@@ -707,6 +707,25 @@ div.profile {
   font-size: 0.9rem;
 }
 
+.tooltip {
+  position: relative;
+}
+
+.tooltiptext {
+  position: absolute;
+  visibility: hidden;
+  color: #ffffff;
+  background-color: rgba(0, 19, 33, 0.5490196078);
+  top: 20px;
+  width: max-content;
+  padding: 0.1rem 0.4rem;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  transition: all 0.3s ease-in 0s;
+}
+
 .user-info {
   display: flex;
   flex-direction: row;
@@ -718,11 +737,27 @@ div.profile {
   margin-inline-end: 1rem;
 }
 
-.create-tweet {
+form.create-tweet {
   width: 100%;
   height: 100%;
   border: none;
   padding-inline: 2rem;
+}
+
+[name=create_tweet] {
+  min-height: 100px;
+  border: 1px solid #00a0f0;
+  border-radius: 0.5rem;
+  padding-inline: 0.6rem;
+  padding-block: 0.6rem;
+  max-width: 500px;
+  text-overflow: ellipsis;
+  overflow: auto;
+  word-wrap: break-word;
+}
+
+input#id_tweet_picture {
+  display: none;
 }
 
 /*# sourceMappingURL=main.css.map */

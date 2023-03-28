@@ -72,8 +72,8 @@
 
 // transition
 
-@mixin transition($time:0.3s, $type:ease-in, $duration:0s){
-    transition:all $time $type $duration;
+@mixin transition($property:all, $duration:0.3s, $type:ease-in, $delay:0s){
+    transition:$property $duration $type $delay;
 }
 
 //  pseudo element

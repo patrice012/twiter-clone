@@ -7,7 +7,7 @@
     <form action="" method="POST" class='form create-tweet' enctype="multipart/form-data">
         {% csrf_token %}
 
-        <div class="">
+        <div class="" style="width: 100%;">
             <div class="field--container">
 
                 <div class='form__field'>
@@ -37,7 +37,11 @@
                 
 
                 <div class='form__field'>
-                    {{form.tweet_picture.label_tag}}
+                    <label for="id_tweet_picture">
+                        <i class="fa fa-image"></i>
+                        <i class="fa fa-gif"></i>
+                    </label>
+                    <!-- {{form.tweet_picture.label_tag}} -->
                     {{form.tweet_picture}}
 
                     <!-- {% if profile.profile_picture_url %}
