@@ -3,8 +3,14 @@
 {% load thumbnail %}
 
 {% block content %}
-<main class=''>
-    <form action="" method="POST" class='form create-tweet' enctype="multipart/form-data">
+    <form   hx-target="#tweets_container"
+            hx-swap="afterbegin"
+            hx-post="{% url 'save_tweet_hxpost' %}"
+            hx-encoding="multipart/form-data"
+            id="tweet-form"
+            method="POST" 
+            class='form create-tweet' 
+            enctype="multipart/form-data">
         {% csrf_token %}
 
         <div class="" style="width: 100%;">
@@ -12,7 +18,7 @@
 
                 <div class='form__field'>
                     {{form.content.label_tag}}
-                    <!-- {{form.content}} -->
+                    {{form.content}}
                     
                     <div
                         class=" contenteditable"
@@ -25,40 +31,29 @@
                     </div>
                     <span class='form--error'>{{form.content.errors}}</span>
                 </div>
-
-                <!-- <div class='form__field'>
-                    {{form.location.label_tag}}
-                    {{form.location}}
-                    <span class='form--error'>{{form.location.errors}}</span>
-                </div> -->
             </div>
 
             <div class="field--container">
-                
-
                 <div class='form__field'>
-                    <label for="id_tweet_picture">
+                    <label class="tweet-field" for="id_tweet_picture">
                         <i class="fa fa-image"></i>
-                        <i class="fa fa-gif"></i>
                     </label>
-                    <!-- {{form.tweet_picture.label_tag}} -->
+                    {{form.tweet_picture.label_tag}}
                     {{form.tweet_picture}}
-
-                    <!-- {% if profile.profile_picture_url %}
-                        <img class="squareCard" src="{% thumbnail profile.profile_picture 55x0 quality=100 %}" alt="">
-                    {% endif %} -->
-                    
                     <span class='form--error'>{{form.tweet_picture.errors}}</span>
                 </div>
 
             </div>
         </div>
 
-        <input class='btn submit' type="submit" value="tweet">
+
+        <input class='btn submit' type="submit" value="tweet" >
         <input type="hidden" name="next" value="{{ next }}">
     </form>
-</main>
 
+    <div class="img-preview--container">
+        <img class="img-preview" src="" alt="">
+    </div>
 <script src="{% static 'js/tweet.js' %}"></script>
 
 {% endblock %}

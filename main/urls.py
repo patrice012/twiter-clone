@@ -6,5 +6,6 @@ from main import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('tweet/', views.create_tweet, name='create_tweet'),
+    path('creat-tweet/', views.create_tweet_hx, name='create_tweet_hx'),
+    path('save-tweet/', views.save_tweet_hxpost, name='save_tweet_hxpost'),
 ]

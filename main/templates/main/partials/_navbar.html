@@ -40,19 +40,13 @@
     </div>
 
     <div class="inlineLinks">
-        <!-- <i class="fa-regular fa-mobile"></i> -->
-        <!-- <i class="fa-sharp fa-light fa-circle-ellipsis"></i> -->
         <i class="fa-regular fa-circle-ellipsis"></i>
         <i class="fa-regular fa-circle-ellipsis fa-spin"></i>
         <h5>More</h5>
     </div>
 
-    <button hx-get="{% url 'create_tweet' %}"
+    <button hx-get="{% url 'create_tweet_hx' %}"
             hx-target="#main-header"
-            hx-swap="outerHTML"
+            hx-swap="innerHTML"
             class="primaryBtn roundCorener">Tweet</button>
 </div>
-
-<!-- <div class="userInfo">
-    <h2>Username</h2>
-</div> -->

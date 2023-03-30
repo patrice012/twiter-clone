@@ -45,6 +45,7 @@ THIRD_PARTY_APPS = [
 
     'tinymce',
     'easy_thumbnails',
+    'django_htmx',
 ]
 
 INSTALLED_APPS += LOCAL_APPS
@@ -60,6 +61,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'django_htmx.middleware.HtmxMiddleware',
 ]
 
 ROOT_URLCONF = 'core.urls'
@@ -88,24 +91,33 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 
 
-DATABASES = {
-    'default':{
-        'ENGINE':'django.db.backends.postgresql',
-        'NAME':get_env_variable('DB_NAME'),
-        'USER':get_env_variable('DB_USER'),
-        'PASSWORD':get_env_variable('DB_PASSWORD'),
-        'HOST':get_env_variable('DB_HOST'),
-        'PORT':get_env_variable('DB_PORT'),
+if (
+    get_env_variable('DB_NAME') and 
+    get_env_variable('DB_USER') and
+    get_env_variable('DB_PASSWORD') and 
+    get_env_variable('DB_HOST') and
+    get_env_variable('DB_PORT')
+    ):
+
+    DATABASES = {
+        'default':{
+            'ENGINE':'django.db.backends.postgresql',
+            'NAME':get_env_variable('DB_NAME'),
+            'USER':get_env_variable('DB_USER'),
+            'PASSWORD':get_env_variable('DB_PASSWORD'),
+            'HOST':get_env_variable('DB_HOST'),
+            'PORT':get_env_variable('DB_PORT'),
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

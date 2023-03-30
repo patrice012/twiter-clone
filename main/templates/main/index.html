@@ -21,24 +21,24 @@
         <h3><a href="#">Multimedia</a></h3>
         <h3><a href="#">Likes</a></h3>
       </div>
-      {% include 'main/partials/_tweets.html' %}
-      {% include 'main/partials/_tweets.html' %}
-      {% include 'main/partials/_tweets.html' %}
+      
+      <div id="tweets_container">
+        {% include 'main/partials/_tweets.html' with tweets=tweets %}
+      </div>
     </section>
-
   </section>
 
   <aside class="rigth--section centerEle">
-    <div class="section__fixed">
+    <div class="section__fixed" id="tcontainer">
       <div class="container flexDisplay fullHeight">
         <div class="search--container">
           <input class="search" type="text" placeholder="Search on twitter" />
           <i class="fa fa-search"></i>
         </div>
 
-        {% include 'main/partials/_new_friends.html' %}
+        <!-- {% include 'main/partials/_new_friends.html' %}
 
-        {% include 'main/partials/_follow.html' %}
+        {% include 'main/partials/_follow.html' %} -->
       </div>
     </div>
   </aside>

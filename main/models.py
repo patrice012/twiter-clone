@@ -16,5 +16,15 @@ class Tweet(DateMixins):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField()
     # content = HTMLField()
-    tweet_picture = models.ImageField(_("Image"), upload_to=user_post_diresctory, height_field=None, width_field=None, max_length=None, blank=True, null=True)
+    tweet_picture = models.ImageField(_("Image"),blank=True, null=True)
+
+
+
+    @property
+    def tweet_picture_url(self):
+        try:
+            url = self.tweet_picture.url
+        except:
+            url = None
+        return url
 

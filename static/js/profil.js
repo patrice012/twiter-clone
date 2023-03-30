@@ -1,14 +1,14 @@
-let imgLinks = document.querySelectorAll('div.form__field > a[href^="/media/"]');
 
-
-if (imgLinks){
-    Array.from(imgLinks).forEach((img) => {
-        img.previousElementSibling.classList.add("selecteMedia");
-    });
+if (document.querySelectorAll('div.form__field > a[href^="/media/"]')) {
+  Array.from(
+    document.querySelectorAll('div.form__field > a[href^="/media/"]')
+  ).forEach((img) => {
+    img.previousElementSibling.classList.add("selecteMedia");
+  });
 }
 
 
-let imgLink = document.querySelectorAll('div.form__field > a[href^="/media/"] ~ br');
+var imgLink = document.querySelectorAll('div.form__field > a[href^="/media/"] ~ br');
 
 if (imgLink){
     Array.from(imgLink).forEach(ele => {
@@ -19,8 +19,8 @@ if (imgLink){
 // preview image onload
 
 
-let formField = document.querySelectorAll(".form__field");
-let arrFormField = Array.from(formField)
+var formField = document.querySelectorAll(".form__field");
+var arrFormField = Array.from(formField)
 arrFormField.forEach(ele => {
     ele.addEventListener('change',previewImage)
 })
