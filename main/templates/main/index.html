@@ -42,10 +42,11 @@
           <input class="search" type="text" placeholder="Search on twitter" />
           <i class="fa fa-search"></i>
         </div>
+        {% include 'main/partials/_lazy_loadind_indicator.html' with url=load_friends_hx %}
+        <!-- {% include 'main/partials/_new_friends.html' %} -->
 
-        {% include 'main/partials/_new_friends.html' %}
-
-        {% include 'main/partials/_follow.html' %}
+        {% include 'main/partials/_lazy_loadind_indicator.html' with url=load_follow_hx %}
+        <!-- {% include 'main/partials/_follow.html' %} -->
       </div>
     </div>
   </aside>

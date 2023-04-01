@@ -14,7 +14,7 @@ htmx_urlpatterns = [
     path('nav-bar-hx/', views.load_component_hx, name='load_nav_bar_hx'),
     path('header-hx/', views.load_component_hx, name='load_header_hx'),
     path('friends-hx/', views.load_component_hx, name='load_friends_hx'),
-    path('trends-hx/', views.load_component_hx, name='load_trends_hx'),
+    # path('trends-hx/', views.load_component_hx, name='load_trends_hx'),
     path('follow-hx/', views.load_component_hx, name='load_follow_hx'),
 ]
 
