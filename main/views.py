@@ -21,6 +21,27 @@ def index(request, *args, **kwargs):
     return render(request, 'main/index.html')
 
 
+def load_component_hx(request):
+    links = {
+        'nav-bar-hx':'_navbar.html',
+        'header-hx':'_header.html',
+        'friends-hx':'',
+        'trends-hx':'',
+        'follow-hx':'',
+    }
+
+    for key in links.keys():
+        print(str(request.path))
+        print(f'/{key}/')
+        print(str(request.path) ==f'/{key}/')
+        if str(request.path) == f'/{key}/':
+            template = links[key]
+            fragment = 'main/partials/'+template
+            return render(request,fragment)
+    return HttpResponse(f'{request.path} is not a valid endpoint.')
+
+
+
 @require_GET
 def create_tweet_hx(request, *args, **kwargs) -> HttpResponse:
     form = TweetForm()

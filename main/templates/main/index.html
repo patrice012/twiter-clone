@@ -3,15 +3,14 @@
   <aside class="left--section">
     <div class="section__fixed centerEle fullHeight">
 
-      {% include 'main/partials/_navbar.html' %}
-      
+      {% include 'main/partials/_lazy_loadind_indicator.html' with url=nav_bar_link %}
     </div>
   </aside>
 
   <section class="main--section">
     <div id="main-header" class="container">
-
-      {% include 'main/partials/_header.html' %}
+      {% include 'main/partials/_lazy_loadind_indicator.html' with url=load_header_hx %}
+      <!-- {% include 'main/partials/_header.html' %} -->
     </div>
 
     <section class="tweets--container">
@@ -29,7 +28,6 @@
             hx-swap="afterend" 
             hx-target="this" 
             name="indexLoading">
-          {{is_last_page}}is_last_page
         </div>
 
       </div>
