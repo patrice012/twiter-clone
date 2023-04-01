@@ -54,6 +54,7 @@ document.addEventListener('submit',(e)=> {
 
 
 
+
 // preview image onload
 
 let imgBox = document.querySelector(".img-preview");

@@ -1,6 +1,6 @@
     <div class="tweet--container">
         <div class="user--img">
-            <img src="{{tweet.user.profile.profile_picture_url}}" alt="">
+            <img  loading="lazy" width="50" height="50" src="{{tweet.user.profile.profile_picture_url}}" alt="">
         </div>
         <div class="tweet">
             <div class="user-info">
@@ -12,7 +12,7 @@
             <div class="tweet-img">
                 
                 {% if tweet.tweet_picture %}
-                    <img src="{{tweet.tweet_picture_url}}" alt="">
+                    <img  loading="lazy" width="200" height="200" src="{{tweet.tweet_picture_url}}" alt="">
                 {% endif %}
                     
             </div>
@@ -25,7 +25,6 @@
                 <div class="action tooltip">
                     <span class="tooltiptext">Retweet</span>
                     <i class="fa fa-retweet"></i>
-                    <!-- <i class="fa fa-recycle"></i> -->
                     <h6>345</h6>
                 </div>
                 <div class="action tooltip">

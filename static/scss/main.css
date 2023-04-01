@@ -649,6 +649,10 @@ div.profile {
   transition: all 0.3s ease-in 0s;
 }
 
+#tweets_container.onload {
+  margin-block-start: -3rem;
+}
+
 .tweet--container {
   display: grid;
   grid-template-columns: 50px 1fr;

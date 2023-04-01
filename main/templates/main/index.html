@@ -22,9 +22,18 @@
         <h3><a href="#">Likes</a></h3>
       </div>
 
-      <div id="tweets_container">
-        {% include 'main/partials/_tweets.html' with tweets=tweets %}
+      <div id="tweets_container" class="onload">
+
+        <div 
+            hx-get="{% url 'tweet_list' %}?page={{page_obj.number|add:1}}" hx-trigger="revealed" 
+            hx-swap="afterend" 
+            hx-target="this" 
+            name="indexLoading">
+          {{is_last_page}}is_last_page
+        </div>
+
       </div>
+
     </section>
   </section>
 
