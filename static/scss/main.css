@@ -691,6 +691,12 @@ div.profile {
   align-items: center;
   flex-wrap: wrap;
 }
+.tweet-trends i {
+  font-size: 1rem;
+}
+.tweet-trends h6 {
+  font-size: 0.8rem;
+}
 .tweet-trends > .action {
   display: flex;
   flex-direction: row;
@@ -722,7 +728,7 @@ div.profile {
   background-color: rgba(0, 19, 33, 0.5490196078);
   top: 20px;
   width: max-content;
-  padding: 0.1rem 0.4rem;
+  padding: 0rem 0.4rem 0.2rem;
 }
 
 .tooltip:hover .tooltiptext {

@@ -397,6 +397,14 @@ div.profile {
 .tweet-trends {
     @include display-flex($justify:space-between);
 
+    & i {
+        font-size: 1rem;
+    }
+
+    & h6 {
+        font-size: .8rem;
+    }
+
     & > .action {
         @include display-flex;
         cursor: pointer;
@@ -430,7 +438,7 @@ div.profile {
     top:20px;
     width: max-content;
     // border: 1px solid;
-    padding: 0.1rem 0.4rem;
+    padding: 0rem 0.4rem 0.2rem;
     // @include transition($delays:5s);
 }
 

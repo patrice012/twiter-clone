@@ -5,7 +5,8 @@ from django.shortcuts import render, redirect
 from django.views.decorators.http import require_GET, require_POST
 from django.views.decorators.http import require_http_methods
 from django.views.generic.list import ListView
-
+from django.shortcuts import get_object_or_404
+from django.db.models import F
 # Create your views here.
 
 from main.forms import TweetForm
@@ -51,6 +52,7 @@ def create_tweet_hx(request, *args, **kwargs) -> HttpResponse:
     }
     return render(request, 'main/partials/_create_update_tweet.html', context)
 
+
 @require_POST
 def save_tweet_hxpost(request) -> HttpResponse:
     form = TweetForm(request.POST or None, request.FILES or None)
@@ -70,14 +72,26 @@ class TweetListView(ListView):
     paginate_by = 5
     template_name ='main/partials/_tweets.html'
 
+    def get_queryset(self):
+        # keep the same order after updating an object
+        return super().get_queryset().order_by('created')
+    
+
 tweet_list = TweetListView.as_view()
 
 
-# def tweet_list_hx(request):
-#     tweets = Tweet.objects.all()[:5]
-#     context = {'tweets':tweets}
-#     html_fragment = render_to_string('main/partials/_tweets_list.html')
-#     return HttpResponse(html_fragment)
+def like_hx(request, tweet_id):
+    # tweet = get_object_or_404(Tweet, pk=tweet_id)
+    # update the current number of view
+    likes_users = Tweet.objects.get(id=tweet_id).values_list('likes')
+    print(likes_users)
+    # refresh DB and get the new value
+    # tweet.refresh_from_db()
+    # like = tweet.likes
+    # context = {'tweets':tweets}
+    # html_fragment = render_to_string('main/partials/_tweets_list.html')
+    html = f'<h6 id="like{tweet.id}">{tweet.likes}</h6>'
+    return HttpResponse('html')
 
 
 

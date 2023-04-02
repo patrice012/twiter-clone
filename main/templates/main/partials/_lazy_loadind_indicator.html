@@ -1,5 +1,5 @@
 {% load static %}
 
-<div hx-get={{url}} hx-trigger="load" hx-target="this">
+<div hx-get={{url}} hx-trigger="load delay:1s" hx-target="this">
     <img  alt="Result loading..." class="htmx-indicator" width="70" height="70" src="{% static 'img/loading.svg' %}"/>
 </div>

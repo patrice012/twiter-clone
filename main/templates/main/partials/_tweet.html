@@ -27,15 +27,15 @@
                     <i class="fa fa-retweet"></i>
                     <h6>345</h6>
                 </div>
-                <div class="action tooltip">
+                <div hx-get="{% url 'like_hx' tweet.id %}" hx-target="#like{{tweet.id}}" hx-swap="outerHTML" class="action tooltip">
                     <span class="tooltiptext">Like</span>
                     <i class="fa-regular fa-heart"></i>
-                    <h6>55k</h6>
+                    <h6 id="like{{tweet.id}}">{{tweet.likes}}</h6>
                 </div>
                 <div class="action tooltip">
                     <span class="tooltiptext">View</span>
                     <i class="fa fa-chart-simple"></i>
-                    <h6>88k</h6>
+                    <h6>{{tweet.views}}</h6>
                 </div>
 
                 <div class="action tooltip">

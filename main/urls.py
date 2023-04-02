@@ -10,6 +10,7 @@ urlpatterns = [
 htmx_urlpatterns = [
     path('creat-tweet/', views.create_tweet_hx, name='create_tweet_hx'),
     path('save-tweet/', views.save_tweet_hxpost, name='save_tweet_hxpost'),
+    path('like/<int:tweet_id>/', views.like_hx, name='like_hx'),
 
     path('nav-bar-hx/', views.load_component_hx, name='load_nav_bar_hx'),
     path('header-hx/', views.load_component_hx, name='load_header_hx'),
