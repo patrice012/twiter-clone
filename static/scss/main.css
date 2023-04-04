@@ -697,6 +697,9 @@ div.profile {
 .tweet-trends h6 {
   font-size: 0.8rem;
 }
+.tweet-trends i.like, .tweet-trends h6.like {
+  color: #00a0f0;
+}
 .tweet-trends > .action {
   display: flex;
   flex-direction: row;
@@ -706,9 +709,8 @@ div.profile {
   cursor: pointer;
   transition: all 0.3s ease-in 0s;
 }
-.tweet-trends > .action:is(:hover, :active) {
+.tweet-trends > .action.like i, .tweet-trends > .action.like h6 {
   color: #00a0f0;
-  transition: all 0.3s ease-in 0s;
 }
 
 .tweet-trends .action,

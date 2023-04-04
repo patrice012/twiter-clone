@@ -405,15 +405,23 @@ div.profile {
         font-size: .8rem;
     }
 
+    & i.like, & h6.like{
+        color: $blue_light;
+    }
+
     & > .action {
         @include display-flex;
         cursor: pointer;
         @include transition;
 
-        &:is(:hover, :active) {
+        &.like i, &.like h6 {
             color: $blue_light;
-            @include transition;
         }
+
+        // &:is(:hover, :active) {
+        //     color: $blue_light;
+        //     @include transition;
+        // }
     }
 }
 

@@ -81,17 +81,19 @@ tweet_list = TweetListView.as_view()
 
 
 def like_hx(request, tweet_id):
-    # tweet = get_object_or_404(Tweet, pk=tweet_id)
-    # update the current number of view
-    likes_users = Tweet.objects.get(id=tweet_id).values_list('likes')
-    print(likes_users)
-    # refresh DB and get the new value
-    # tweet.refresh_from_db()
-    # like = tweet.likes
-    # context = {'tweets':tweets}
-    # html_fragment = render_to_string('main/partials/_tweets_list.html')
-    html = f'<h6 id="like{tweet.id}">{tweet.likes}</h6>'
-    return HttpResponse('html')
+    tweet = get_object_or_404(Tweet, pk=tweet_id)
+    # update the current number of like
+    likes_users = tweet.users_like_id
+    if request.user.id in likes_users:
+        tweet.likes_by.remove(request.user)
+        tweet.save()
+        html = f'<span class="tooltiptext">Like</span><i class="fa-regular fa-heart"></i><h6 id="like{tweet.id}">{tweet.likes}</h6>'
+
+    else:
+        tweet.likes_by.add(request.user)
+        tweet.save()
+        html = f'<span class="tooltiptext">Unlike</span><i class="fa-solid fa-heart like"></i><h6 id="like{tweet.id}" class="like">{tweet.likes}</h6>'
+    return HttpResponse(html)
 
 
 
