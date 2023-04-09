@@ -653,6 +653,16 @@ div.profile {
   margin-block-start: -3rem;
 }
 
+#tweets_container .form--container {
+  box-shadow: none;
+  width: 100%;
+  border-radius: 0;
+}
+#tweets_container .submit {
+  width: 30%;
+  margin: 0;
+}
+
 .tweet--container {
   display: grid;
   grid-template-columns: 50px 1fr;

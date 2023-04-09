@@ -2,6 +2,7 @@ from django.core.paginator import Paginator
 from django.template.loader import render_to_string
 from django.http import HttpResponse, HttpRequest
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required, permission_required
 from django.views.decorators.http import require_GET, require_POST
 from django.views.decorators.http import require_http_methods
 from django.views.generic.list import ListView
@@ -80,6 +81,7 @@ class TweetListView(ListView):
 tweet_list = TweetListView.as_view()
 
 
+@login_required
 def like_hx(request, tweet_id):
     tweet = get_object_or_404(Tweet, pk=tweet_id)
     # update the current number of like
@@ -93,7 +95,9 @@ def like_hx(request, tweet_id):
         tweet.likes_by.add(request.user)
         tweet.save()
         html = f'<span class="tooltiptext">Unlike</span><i class="fa-solid fa-heart like"></i><h6 id="like{tweet.id}" class="like">{tweet.likes}</h6>'
-    return HttpResponse(html)
+    if request.htmx:
+        return HttpResponse(html)
+    return render(request, 'main/index.html')
 
 
 

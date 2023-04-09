@@ -1,4 +1,4 @@
-    <div class="tweet--container">
+    <div class="tweet--container"  id="tweet-{{tweet.id}}">
         <div class="user--img">
             <img  loading="lazy" width="50" height="50" src="{{tweet.user.profile.profile_picture_url}}" alt="">
         </div>
@@ -28,9 +28,15 @@
                     <h6>345</h6>
                 </div>
 
-                <div hx-get="{% url 'like_hx' tweet.id %}" hx-swap="innerHTML" class="action tooltip {% if user.id in tweet.users_like_id %}like{% endif %}">
+                <div hx-get="{% url 'like_hx' tweet.id %}" 
+                hx-swap="{% if request.user.is_authenticated %}innerHTML {% else %}outerHTML{% endif %}" 
+                hx-target="{% if request.user.is_authenticated %}this {% else %}#tweet-{{tweet.id}}{% endif %}" 
+                class="action tooltip {% if user.id in tweet.users_like_id %}like{% endif %}">
+                
                     <span class="tooltiptext">{% if user.id in tweet.users_like_id %}Dislike{% else %}regular{% endif %}</span>
+
                     <i class="fa-{% if user.id in tweet.users_like_id %}solid {% else %}regular{% endif %} fa-heart"></i>
+
                     <h6 id="like{{tweet.id}}">{{tweet.likes}}</h6>
                 </div>
 

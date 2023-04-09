@@ -359,6 +359,19 @@ div.profile {
     margin-block-start: -3rem;
 }
 
+#tweets_container {
+    & .form--container {
+        box-shadow:none;
+        width: 100%;
+        border-radius: 0;
+    }
+
+    & .submit {
+        width: 30%;
+        margin: 0;
+    }
+}
+
 
 // tweets part
 
@@ -417,11 +430,6 @@ div.profile {
         &.like i, &.like h6 {
             color: $blue_light;
         }
-
-        // &:is(:hover, :active) {
-        //     color: $blue_light;
-        //     @include transition;
-        // }
     }
 }
 
