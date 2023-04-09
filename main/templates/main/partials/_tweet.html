@@ -28,11 +28,13 @@
                     <h6>345</h6>
                 </div>
 
-                <div hx-get="{% url 'like_hx' tweet.id %}" 
-                hx-swap="{% if request.user.is_authenticated %}innerHTML {% else %}outerHTML{% endif %}" 
-                hx-target="{% if request.user.is_authenticated %}this {% else %}#tweet-{{tweet.id}}{% endif %}" 
-                class="action tooltip {% if user.id in tweet.users_like_id %}like{% endif %}">
-                
+                <div 
+                    hx-get="{% url 'like_hx' tweet.id %}" 
+                    hx-swap="{% if request.user.is_authenticated %}innerHTML {% else %}outerHTML{% endif %}" 
+                    hx-target="{% if request.user.is_authenticated %}this {% else %}#tweet-{{tweet.id}}{% endif %}" 
+                    class="action tooltip {% if user.id in tweet.users_like_id %}like{% endif %}"
+                >
+
                     <span class="tooltiptext">{% if user.id in tweet.users_like_id %}Dislike{% else %}regular{% endif %}</span>
 
                     <i class="fa-{% if user.id in tweet.users_like_id %}solid {% else %}regular{% endif %} fa-heart"></i>

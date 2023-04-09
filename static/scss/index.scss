@@ -363,12 +363,13 @@ div.profile {
     & .form--container {
         box-shadow:none;
         width: 100%;
-        border-radius: 0;
+        border: .5px solid $blue_light;
+        border-radius: 1rem;
+        margin-block-end: 1rem;
     }
 
     & .submit {
         width: 30%;
-        margin: 0;
     }
 }
 
@@ -404,7 +405,7 @@ div.profile {
         height: 300px;
         object-fit: cover;
         object-position: center;
-        border-radius: $raduis
+        border-radius: $raduis;
 }
 
 .tweet-trends {
