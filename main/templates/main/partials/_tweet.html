@@ -29,20 +29,25 @@
                 </div>
 
                 <div 
-                    hx-get="{% url 'like_hx' tweet.id %}" 
+                    hx-get="{% url 'tweet_actions_hx' 'like' tweet.id %}" 
                     hx-swap="{% if request.user.is_authenticated %}innerHTML {% else %}outerHTML{% endif %}" 
-                    hx-target="{% if request.user.is_authenticated %}this {% else %}#tweet-{{tweet.id}}{% endif %}" 
+                    hx-target="{% if not request.user.is_authenticated %}#tweet-{{tweet.id}}{% else %}this{% endif %}" 
                     class="action tooltip {% if user.id in tweet.users_like_id %}like{% endif %}"
                 >
 
-                    <span class="tooltiptext">{% if user.id in tweet.users_like_id %}Dislike{% else %}regular{% endif %}</span>
+                    <span class="tooltiptext">{% if user.id in tweet.users_like_id %}Unlike{% else %}Like{% endif %}</span>
 
                     <i class="fa-{% if user.id in tweet.users_like_id %}solid {% else %}regular{% endif %} fa-heart"></i>
 
                     <h6 id="like{{tweet.id}}">{{tweet.likes}}</h6>
                 </div>
 
-                <div class="action tooltip">
+                <div
+                    hx-get="{% url 'tweet_actions_hx' 'views' tweet.id %}" 
+                    hx-swap="innerHTML" 
+                    hx-target="this" 
+                    hx-trigger="revealed"
+                    class="action tooltip">
                     <span class="tooltiptext">View</span>
                     <i class="fa fa-chart-simple"></i>
                     <h6>{{tweet.views}}</h6>

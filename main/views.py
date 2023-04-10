@@ -33,8 +33,8 @@ def load_component_hx(request):
     }
 
     for key in links.keys():
-        # check if the provider url is one in the dict
-        # if true th gt the relate html template
+        # check if the provider url is match one in the dict
+        # if true then get the relate html template
         
         if str(request.path) == f'/{key}/':
             template = links[key]
@@ -81,6 +81,16 @@ class TweetListView(ListView):
 tweet_list = TweetListView.as_view()
 
 
+def tweet_actions_hx(request, *args, **kwargs) -> HttpResponse():
+    pk = kwargs['id']
+    action_name = kwargs['name']
+    if '/like/' in str(request.path):
+        view_func = like_hx
+    if '/views/' in str(request.path):
+        view_func = tweet_views_hx
+    return view_func(request, pk)
+
+
 @login_required
 def like_hx(request, tweet_id):
     tweet = get_object_or_404(Tweet, pk=tweet_id)
@@ -101,22 +111,21 @@ def like_hx(request, tweet_id):
 
 
 
-# def paginate_tweet_list_hx(request):
+def tweet_views_hx(request, id):
+    tweet = get_object_or_404(Tweet, pk=id)
+    # viewa_users = tweet.users_views_id
 
-#     # Query your data and paginate the results
-#     query_set = Tweet.objects.all()[5:]
-#     paginator = Paginator(query_set, 5)
+    # if not request.user.id in viewa_users:
+    #     tweet.views_by.add(request.user)
+    #     tweet.save()
+    tweet.views_by = F('views_by') + 1
+    tweet.save()
+    tweet.refresh_from_db()
+    if request.htmx:
+        html = f'<span class="tooltiptext">View</span><i class="fa fa-chart-simple"></i><h6>{tweet.view_numbers}</h6>'
+        return HttpResponse(html)
 
-#     # Get the current page number from the query parameters
-#     page_number = request.GET.get('page')
-
-#     # Get the current page of results
-#     page_obj = paginator.get_page(page_number)
-
-#     # Calculate the total number of pages
-#     total_pages = paginator.num_pages
-
-#     # Render the initial page with the results and the total number of pages
-#     context = {'tweets': page_obj, 'total_pages': total_pages}
-#     html_fragment = render_to_string('main/partials/_tweets_list.html',context)
-#     return HttpResponse(html_fragment)
+    # Render the initial page with the results and the total number of pages
+    context = {'tweets': page_obj, 'total_pages': total_pages}
+    html_fragment = render_to_string('main/partials/_tweets_list.html',context)
+    return HttpResponse(html_fragment)

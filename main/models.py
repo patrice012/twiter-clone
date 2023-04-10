@@ -19,6 +19,7 @@ class Tweet(DateMixins):
     tweet_picture = models.ImageField(_("Image"),blank=True, null=True)
     likes_by = models.ManyToManyField(User, related_name='tweet_likes', blank=True)
     views_by = models.ManyToManyField(User,related_name='tweet_views',blank=True)
+    views_by = models.PositiveIntegerField(_("tweet view by"), default=0, blank=True)
 
 
     @property
@@ -35,9 +36,13 @@ class Tweet(DateMixins):
 
     @property
     def view_numbers(self):
-        return self.views_by.count()
+        return self.views_by
     
     @property
     def users_like_id(self):
         return self.likes_by.values_list('id', flat=True)
+
+    # @property
+    # def users_views_id(self):
+    #     return self.views_by.values_list('id', flat=True)
 
