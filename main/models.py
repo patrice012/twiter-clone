@@ -6,6 +6,7 @@ from tinymce.models import HTMLField
 
 from core.utils import user_post_diresctory
 from .mixins import DateMixins
+from .utils import format_output
 
 User = settings.AUTH_USER_MODEL
 
@@ -32,11 +33,11 @@ class Tweet(DateMixins):
 
     @property
     def likes(self):
-        return self.likes_by.count()
+        return format_output(self.likes_by.count())
 
     @property
     def view_numbers(self):
-        return self.views_by
+        return format_output(self.views_by)
     
     @property
     def users_like_id(self):
