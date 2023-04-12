@@ -5,7 +5,8 @@ from django.utils.translation import gettext_lazy as _
 from tinymce.models import HTMLField
 
 from core.utils import user_post_diresctory
-from .mixins import DateMixins
+from main.mixins import DateMixins
+
 from .utils import format_output
 
 User = settings.AUTH_USER_MODEL
@@ -19,7 +20,7 @@ class Tweet(DateMixins):
     # content = HTMLField()
     tweet_picture = models.ImageField(_("Image"),blank=True, null=True)
     likes_by = models.ManyToManyField(User, related_name='tweet_likes', blank=True)
-    views_by = models.ManyToManyField(User,related_name='tweet_views',blank=True)
+    # views_by = models.ManyToManyField(User,related_name='tweet_views',blank=True)
     views_by = models.PositiveIntegerField(_("tweet view by"), default=0, blank=True)
 
 

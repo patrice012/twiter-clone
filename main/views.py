@@ -113,11 +113,6 @@ def like_hx(request, tweet_id):
 
 def tweet_views_hx(request, id):
     tweet = get_object_or_404(Tweet, pk=id)
-    # viewa_users = tweet.users_views_id
-
-    # if not request.user.id in viewa_users:
-    #     tweet.views_by.add(request.user)
-    #     tweet.save()
     tweet.views_by = F('views_by') + 1
     tweet.save()
     tweet.refresh_from_db()

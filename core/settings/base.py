@@ -9,7 +9,7 @@ from ..helper import get_env_variable
 # BASE_DIR = Path(__file__).resolve().parent.parent
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-# load .env
+# load .env file
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # Quick-start development settings - unsuitable for production
@@ -39,6 +39,7 @@ LOCAL_APPS = [
     'auth_app.apps.AuthAppConfig',
     'profil.apps.ProfilConfig',
     'main.apps.MainConfig',
+    'comment.apps.CommentConfig',
 ]
 
 THIRD_PARTY_APPS = [
