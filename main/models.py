@@ -15,6 +15,7 @@ User = settings.AUTH_USER_MODEL
 
 
 class Tweet(DateMixins):
+    id = models.BigAutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField()
     # content = HTMLField()
@@ -22,7 +23,6 @@ class Tweet(DateMixins):
     likes_by = models.ManyToManyField(User, related_name='tweet_likes', blank=True)
     # views_by = models.ManyToManyField(User,related_name='tweet_views',blank=True)
     views_by = models.PositiveIntegerField(_("tweet view by"), default=0, blank=True)
-
 
     @property
     def tweet_picture_url(self):
