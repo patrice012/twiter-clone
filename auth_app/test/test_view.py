@@ -73,20 +73,30 @@ def test_login_action_with_email_address(client,create_user):
 
 
 
-# @pytest.mark.django_db
-# def test_super_user_view(admin_client):
-#     url = reverse('superuser-url')
-#     response = admin_client.get(url)
-#     assert response.status_code == 200
+# from django.urls import reverse
+# from django.contrib.auth.models import User
+# from pytest_django.asserts import assertRedirects
 
+def test_sign_in(client):
+    # Create a valid form submission
+    data = {
+        'username': 'testuser',
+        'email': 'testuser@example.com',
+        'password1': 'testpassword123',
+        'password2': 'testpassword123',
+    }
+    response = client.post(reverse('register'), data)
+    assertRedirects(response, reverse('login'))
 
+    # Check that a new user was created with the correct username and email
+    user = User.objects.get(username='testuser')
+    assert user.email == 'testuser@example.com'
 
-# @pytest.mark.django_db
-# def test_unauthorized(client):
-#     url = reverse('superuser-url')
-#     response = client.get(url)
-#     assert response.status_code == 401
-
+    # Try submitting an invalid form (passwords don't match)
+    data['password2'] = 'wrongpassword'
+    response = client.post(reverse('register'), data)
+    assert response.status_code == 200
+    assert 'password2' in response.context['form'].errors
 
 
 

@@ -20,6 +20,5 @@ from profil.models import Profile
 def create_profile(sender,instance, **kwargs):
     if 'created' in kwargs and kwargs['created']:
         profile = Profile.objects.create(user=instance, email=instance.email)
-        print(profile, 'this is the current profile just created')
         
 
