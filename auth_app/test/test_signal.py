@@ -3,7 +3,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.db.models.signals import post_save
 import pytest
 
-from myapp.models import Profile
+from profil.models import Profile
 
 @pytest.fixture
 def user_data():

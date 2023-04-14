@@ -3,7 +3,7 @@ from django.core.exceptions import ValidationError
 from django.forms import forms
 import pytest
 
-from myapp.forms import RegisterForm
+from auth_app.forms import RegisterForm
 
 @pytest.fixture
 def form_data():

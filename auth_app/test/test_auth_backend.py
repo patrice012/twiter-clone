@@ -1,6 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.test import RequestFactory
-from myapp.backends import EmailAuthBackend
+from auth_app.authentication import EmailAuthBackend
 
 class TestEmailAuthBackend:
     def setup_method(self, method):
