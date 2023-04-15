@@ -4,9 +4,7 @@
 
     {% for tweet in tweets %}
 
-    {{page_obj.has_next}}
-
-    {% if forloop.last  %}
+    {% if forloop.last and page_obj.has_next %}
         <div hx-get="{% url 'tweet_list' %}?page={{page_obj.number|add:1}}" hx-trigger="revealed" hx-swap="beforeend" hx-target="#tweets_container">
         </div>
     
@@ -15,15 +13,7 @@
     {% endfor %}
 
 {% else %}
-
-    {% if tweets.queryset %}
-        {% for tweet in tweets %}
-            {% include 'main/partials/_tweet.html' with tweet=tweet %}
-        {% endfor %}
-    {% else %}
-    {% with tweet as tweets %}
-            {% include 'main/partials/_tweet.html' with tweet=tweet %}
-        {% endwith %}
-    {% endif %}
-
+    {% for tweet in tweets %}
+        {% include 'main/partials/_tweet.html' with tweet=tweet %}
+    {% endfor %}
 {% endif %}

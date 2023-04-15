@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.views.decorators.http import require_GET, require_POST
 from django.views.decorators.http import require_http_methods
 from django.views.generic.list import ListView
+from django.views.generic.base import TemplateView
 from django.shortcuts import get_object_or_404
 from django.db.models import F
 # Create your views here.
@@ -15,12 +16,18 @@ from main.models import Tweet
 
 
 
-def index(request, *args, **kwargs):
-    tweets = Tweet.objects.all()
-    context={
-    'tweets':tweets
-    }
-    return render(request, 'main/index.html')
+
+class IndexView(TemplateView):
+    template_name = 'main/index.html'
+
+index = IndexView.as_view()
+
+# def index(request, *args, **kwargs):
+#     tweets = Tweet.objects.all()
+#     context={
+#     'tweets':tweets
+#     }
+#     return render(request, 'main/index.html',context)
 
 
 def load_component_hx(request):
@@ -58,13 +65,17 @@ def create_tweet_hx(request, *args, **kwargs) -> HttpResponse:
 def save_tweet_hxpost(request) -> HttpResponse:
     form = TweetForm(request.POST or None, request.FILES or None)
     if form.is_valid():
+        print(form.is_valid(), 'form.is_valid()')
         form.instance.user = request.user
         tweet = form.save()
+        print(tweet.id, 'test tttttttttt')
+        tweet = Tweet.objects.get(id = tweet.id)
         context = {
             'tweets':tweet,
         }
-    html_fragment = render_to_string('main/partials/_tweets.html', context)
-    return HttpResponse(html_fragment)
+    # html_fragment = render_to_string('main/partials/_tweets.html', context)
+    # return HttpResponse(html_fragment)
+    return HttpResponse('true')
 
 
 class TweetListView(ListView):
@@ -77,7 +88,6 @@ class TweetListView(ListView):
         # keep the same order after updating an object
         return super().get_queryset().order_by('created')
     
-
 tweet_list = TweetListView.as_view()
 
 
