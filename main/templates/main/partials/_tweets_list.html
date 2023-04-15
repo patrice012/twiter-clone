@@ -1,9 +1,0 @@
-{% for tweet in tweets %}
-    {% include 'main/partials/_tweet.html' with tweet=tweet %}
-{% endfor %}
-
-
-<div hx-get="{% url 'tweet_list' %}?page=1" hx-trigger="load once" hx-target="this">
-  
-</div>
-

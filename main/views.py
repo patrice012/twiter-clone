@@ -16,7 +16,7 @@ from main.models import Tweet
 
 
 def index(request, *args, **kwargs):
-    tweets = Tweet.objects.all()[:5]
+    tweets = Tweet.objects.all()
     context={
     'tweets':tweets
     }
@@ -83,6 +83,7 @@ tweet_list = TweetListView.as_view()
 
 def tweet_actions_hx(request, *args, **kwargs) -> HttpResponse():
     pk = kwargs['id']
+    print(args, kwargs)
     action_name = kwargs['name']
     if '/like/' in str(request.path):
         view_func = like_hx
@@ -92,8 +93,8 @@ def tweet_actions_hx(request, *args, **kwargs) -> HttpResponse():
 
 
 @login_required
-def like_hx(request, tweet_id):
-    tweet = get_object_or_404(Tweet, pk=tweet_id)
+def like_hx(request, id):
+    tweet = get_object_or_404(Tweet, pk=id)
     # update the current number of like
     likes_users = tweet.users_like_id
     if request.user.id in likes_users:

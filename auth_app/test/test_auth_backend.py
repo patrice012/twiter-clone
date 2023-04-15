@@ -14,12 +14,12 @@ class TestEmailAuthBackend:
         self.user = get_user_model().objects.create_user(**self.user_data)
 
     def test_authenticate_valid_credentials(self):
-        request = self.request_factory.post('/login/', {'email': self.user_data['email'], 'password': self.user_data['password']})
+        request = self.request_factory.post('accounts/login/', {'email': self.user_data['email'], 'password': self.user_data['password']})
         user = self.backend.authenticate(request=request, username=self.user_data['email'], password=self.user_data['password'])
         assert user == self.user
 
     def test_authenticate_invalid_credentials(self):
-        request = self.request_factory.post('/login/', {'email': self.user_data['email'], 'password': 'wrongpassword'})
+        request = self.request_factory.post('accounts/login/', {'email': self.user_data['email'], 'password': 'wrongpassword'})
         user = self.backend.authenticate(request=request, username=self.user_data['email'], password='wrongpassword')
         assert user is None
 

@@ -15,7 +15,7 @@ User = settings.AUTH_USER_MODEL
 
 
 class Tweet(DateMixins):
-    id = models.BigAutoField(primary_key=True)
+    # id = models.BigAutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField()
     # content = HTMLField()

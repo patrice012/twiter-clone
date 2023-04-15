@@ -4,19 +4,26 @@
 
     {% for tweet in tweets %}
 
-    {% if forloop.last %}
+    {{page_obj.has_next}}
+
+    {% if forloop.last  %}
         <div hx-get="{% url 'tweet_list' %}?page={{page_obj.number|add:1}}" hx-trigger="revealed" hx-swap="beforeend" hx-target="#tweets_container">
         </div>
     
     {% endif %}
         {% include 'main/partials/_tweet.html' with tweet=tweet %}
-
-
     {% endfor %}
 
 {% else %}
 
-    {% with tweets as tweet %}
-        {% include 'main/partials/_tweet.html' with tweet=tweet %}
-    {% endwith %}
+    {% if tweets.queryset %}
+        {% for tweet in tweets %}
+            {% include 'main/partials/_tweet.html' with tweet=tweet %}
+        {% endfor %}
+    {% else %}
+    {% with tweet as tweets %}
+            {% include 'main/partials/_tweet.html' with tweet=tweet %}
+        {% endwith %}
+    {% endif %}
+
 {% endif %}

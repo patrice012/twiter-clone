@@ -11,7 +11,7 @@ from main.mixins import DateMixins
 User = settings.AUTH_USER_MODEL
 
 class Comment(DateMixins):
-    id = models.BigAutoField(primary_key=True)
+    # id = models.BigAutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=None, blank=True)
     content = models.TextField(_("Your comment"), blank=False, null=False)
     parent = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True)

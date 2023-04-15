@@ -6,7 +6,7 @@
       {% include 'main/partials/_lazy_loadind_indicator.html' with url=nav_bar_link %}
     </div>
   </aside>
-
+  
   <section class="main--section">
     <div id="main-header" class="container">
       {% include 'main/partials/_lazy_loadind_indicator.html' with url=load_header_hx %}
@@ -22,13 +22,13 @@
       </div>
 
       <div id="tweets_container" class="onload">
-
-        <div 
-            hx-get="{% url 'tweet_list' %}?page={{page_obj.number|add:1}}" hx-trigger="revealed" 
+        {% include 'main/partials/_tweets.html' with tweets=tweets %}
+        <!-- <div 
+            hx-get="{% url 'tweet_list' %}?page=1" hx-trigger="revealed" 
             hx-swap="afterend" 
             hx-target="this" 
             name="indexLoading">
-        </div>
+        </div> -->
 
       </div>
 

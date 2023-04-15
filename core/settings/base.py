@@ -39,7 +39,7 @@ LOCAL_APPS = [
     'auth_app.apps.AuthAppConfig',
     'profil.apps.ProfilConfig',
     'main.apps.MainConfig',
-    # 'comment.apps.CommentConfig',
+    'comment.apps.CommentConfig',
 ]
 
 THIRD_PARTY_APPS = [
