@@ -16,4 +16,9 @@
     {% for tweet in tweets %}
         {% include 'main/partials/_tweet.html' with tweet=tweet %}
     {% endfor %}
+    
+    {% if new_tweet %}
+        {% include 'main/partials/_tweet.html' with tweet=new_tweet %}
+    {% endif %}
+        
 {% endif %}

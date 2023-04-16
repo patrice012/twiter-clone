@@ -71,11 +71,11 @@ def save_tweet_hxpost(request) -> HttpResponse:
         print(tweet.id, 'test tttttttttt')
         tweet = Tweet.objects.get(id = tweet.id)
         context = {
-            'tweets':tweet,
+            'new_tweet':tweet,
         }
-    # html_fragment = render_to_string('main/partials/_tweets.html', context)
-    # return HttpResponse(html_fragment)
-    return HttpResponse('true')
+    html_fragment = render_to_string('main/partials/_tweets.html', context)
+    return HttpResponse(html_fragment)
+    # return HttpResponse('true')
 
 
 class TweetListView(ListView):
