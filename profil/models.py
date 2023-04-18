@@ -17,7 +17,7 @@ User = settings.AUTH_USER_MODEL
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     email = models.EmailField(null=True,max_length=254)
-    profile_name = models.CharField(_("Profile name"),blank=True, null=True, max_length=50)
+    profile_name = models.CharField(_("Profile name"), blank=True, max_length=50)
     profile_picture = models.ImageField(_("Picture"), upload_to=user_diresctory, height_field=None, width_field=None, max_length=None, blank=True, null=True)
     cover_picture = models.ImageField(_("Cover picture"), upload_to=user_diresctory, height_field=None, width_field=None, max_length=None, blank=True, null=True)
     # bio = models.TextField(_("Say more about you."), null=True, blank=True)
@@ -27,8 +27,7 @@ class Profile(models.Model):
 
 
     def __str__(self):
-        # return '{0} for {1}'.format(self.profile_name, str(self.user.username))
-        return f"{self.user}"
+        return '{0} for {1}'.format(str(self.profile_name), str(self.user.username))
 
     def get_absolute_url(self):
         return reverse("profile", kwargs={"pk": self.pk})
