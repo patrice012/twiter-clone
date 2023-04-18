@@ -26,7 +26,6 @@ class EmailAuthBackend(object):
             django will use this method to get the current user base on their pk
         """
         try:
-            print('step get the current user')
             return User.objects.get(pk=user_id)
         except User.DoesNotExist:
             return None
