@@ -1,7 +1,9 @@
+import pytest
+
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 from django.forms import forms
-import pytest
+from django.forms.widgets import PasswordInput
 
 from auth_app.forms import RegisterForm
 
@@ -23,6 +25,8 @@ def existing_user():
     return user
 
 class TestRegisterForm:
+
+    @pytest.mark.django_db
     def test_form_valid(self, form_data):
         form = RegisterForm(data=form_data)
         assert form.is_valid()
@@ -30,6 +34,7 @@ class TestRegisterForm:
         assert form.cleaned_data['email'] == 'testuser@example.com'
         assert form.cleaned_data['password'] == 'testpassword123'
 
+    @pytest.mark.django_db
     def test_form_invalid_email(self, form_data, existing_user):
         # Test for invalid email
         form_data['email'] = 'existinguser@example.com'
@@ -41,4 +46,4 @@ class TestRegisterForm:
     def test_password_widget(self, form_data):
         # Test that password field has PasswordInput widget
         form = RegisterForm()
-        assert isinstance(form.fields['password'].widget, forms.PasswordInput)
+        assert isinstance(form.fields['password'].widget, PasswordInput)
