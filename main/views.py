@@ -40,7 +40,7 @@ def load_component_hx(request):
     }
 
     for key in links.keys():
-        # check if the provider url is match one in the dict
+        # check if the provider url  match one in the dict
         # if true then get the relate html template
         
         if str(request.path) == f'/{key}/':
@@ -65,17 +65,14 @@ def create_tweet_hx(request, *args, **kwargs) -> HttpResponse:
 def save_tweet_hxpost(request) -> HttpResponse:
     form = TweetForm(request.POST or None, request.FILES or None)
     if form.is_valid():
-        print(form.is_valid(), 'form.is_valid()')
         form.instance.user = request.user
         tweet = form.save()
-        print(tweet.id, 'test tttttttttt')
         tweet = Tweet.objects.get(id = tweet.id)
         context = {
             'new_tweet':tweet,
         }
     html_fragment = render_to_string('main/partials/_tweets.html', context)
     return HttpResponse(html_fragment)
-    # return HttpResponse('true')
 
 
 class TweetListView(ListView):
@@ -93,7 +90,6 @@ tweet_list = TweetListView.as_view()
 
 def tweet_actions_hx(request, *args, **kwargs) -> HttpResponse():
     pk = kwargs['id']
-    print(args, kwargs)
     action_name = kwargs['name']
     if '/like/' in str(request.path):
         view_func = like_hx

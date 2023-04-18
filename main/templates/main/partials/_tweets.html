@@ -13,10 +13,11 @@
     {% endfor %}
 
 {% else %}
+    <!-- because tweets is a queryset of one elements -->
     {% for tweet in tweets %}
         {% include 'main/partials/_tweet.html' with tweet=tweet %}
     {% endfor %}
-    
+    <!-- because tweets is just one instance of Tweet model -->
     {% if new_tweet %}
         {% include 'main/partials/_tweet.html' with tweet=new_tweet %}
     {% endif %}
