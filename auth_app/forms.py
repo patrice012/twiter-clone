@@ -1,5 +1,5 @@
 from django import forms
-
+from django.forms import ValidationError
 from django.contrib.auth import get_user_model
 
 
@@ -14,7 +14,10 @@ class RegisterForm(forms.ModelForm):
 
     def clean_email(self):
         data = self.cleaned_data["email"]
-        user = get_user_model().objects.get(email=data)
+        try:
+            user = get_user_model().objects.get(email=data)
+        except:
+            user = get_user_model().objects.none()
         if user:
             raise ValidationError('This email already exist...', code=data)
         return data
