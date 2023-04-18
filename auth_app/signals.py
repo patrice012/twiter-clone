@@ -8,12 +8,6 @@ from django.dispatch import receiver
 
 
 from profil.models import Profile
-# User = get_user_model()
-# @receiver(user_login_failed, sender=User)
-# def loggin_attempt(sender, **kwargs):
-#     print(sender)
-#     print(kwargs)
-
 
 
 @receiver(post_save, sender=get_user_model())
