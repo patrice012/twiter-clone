@@ -20,7 +20,7 @@ class Tweet(DateMixins):
     content = models.TextField()
     # content = HTMLField()
     tweet_picture = models.ImageField(_("Image"),blank=True, null=True)
-    likes_by = models.ManyToManyField(User, related_name='tweet_likes', blank=True, null=True)
+    likes_by = models.ManyToManyField(User, related_name='tweet_likes', blank=True)
     # views_by = models.ManyToManyField(User,related_name='tweet_views',blank=True)
     views_by = models.PositiveIntegerField(_("tweet view by"), default=0, blank=True)
 

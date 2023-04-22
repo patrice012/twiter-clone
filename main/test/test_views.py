@@ -1,5 +1,6 @@
 import pytest
 import json
+from django.test import TestCase
 from django.urls import reverse
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.contrib.auth import get_user_model
@@ -44,3 +45,28 @@ def test_save_tweet_hxpost(client, user, tweet_form_data):
 
     # Check that the HTML fragment returned in the response contains the tweet's content
     assert tweet.content.encode() in response.content
+
+
+
+@pytest.mark.django_db
+def test_like_hx_views(client, user, tweet_form_data):
+    client.force_login(user)
+    # create a tweet object
+    data = tweet_form_data
+    data['user'] =  user
+    client.post(reverse('save_tweet_hxpost'), data=data, HTTP_X_REQUESTED_WITH='XMLHttpRequest')
+
+    #  test like action
+    t_id = Tweet.objects.first().id
+    res = client.get(f'http://localhost:8000/actions/like/{t_id}/')
+    t = Tweet.objects.first()
+    assert t.likes_by.count() == 1
+    assert user.id  in t.users_like_id
+
+    # test dislike action
+    res = client.get(f'http://localhost:8000/actions/like/{t_id}/')
+    t = Tweet.objects.first()
+    assert t.likes_by.count() == 0
+    assert user.id  not in t.users_like_id
+    
+

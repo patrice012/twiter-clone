@@ -65,7 +65,6 @@ def create_tweet_hx(request, *args, **kwargs) -> HttpResponse:
 def save_tweet_hxpost(request) -> HttpResponse:
     form = TweetForm(request.POST or None, request.FILES or None)
     if form.is_valid():
-        print(form.is_valid(),'form valid')
         form.instance.user = request.user
         tweet = form.save()
         tweet = Tweet.objects.get(id = tweet.id)
