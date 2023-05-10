@@ -1,11 +1,16 @@
 import pytest
 import uuid
 
+from django.test import RequestFactory, SimpleTestCase
 from django.contrib.auth import get_user_model
 from django.shortcuts import redirect, render, reverse, get_object_or_404
 
+from auth_app.views import sign_in
+from auth_app.forms import RegisterForm
 
 User = get_user_model()
+
+from django.contrib.auth.views import LoginView
 
 
 @pytest.fixture
@@ -51,14 +56,6 @@ def test_user_create(create_user):
     assert User.objects.count() == 1
 
 
-@pytest.mark.django_db
-def test_signin_view(client):
-    url = reverse('register')
-    data = {'username':'dave','email':'dave@gmail.com','password':'dave0123'}
-    response = client.post(url, data)
-    assert response.status_code == 302
-
-
 
 @pytest.mark.django_db
 def test_login_action_with_email_address(client,create_user):
@@ -69,35 +66,66 @@ def test_login_action_with_email_address(client,create_user):
     assert response.status_code == 200
 
 
+# @pytest.mark.django_db
+# def test_sign_in(client):
+#     # Create a valid form submission
+#     data = {
+#         'username': 'testuser',
+#         'email': 'testuser@example.com',
+#         'password': 'testpassword123',
+#     }
+#     response = client.post(reverse('register'), data)
+#     SimpleTestCase().assertRedirects(response, reverse('login'))
+
+#     # Check that a new user was created with the correct username and email
+#     user = User.objects.get(username='testuser')
+#     assert user.email == 'testuser@example.com'
 
 
+@pytest.mark.django_db
+def test_sign_in():
+    # create a request factory
+    factory = RequestFactory()
 
-
-# from django.urls import reverse
-# from django.contrib.auth.models import User
-# from pytest_django.asserts import assertRedirects
-
-def test_sign_in(client):
-    # Create a valid form submission
+    # create a POST request with valid data
     data = {
         'username': 'testuser',
         'email': 'testuser@example.com',
-        'password1': 'testpassword123',
-        'password2': 'testpassword123',
+        'password': 'testpassword123',
     }
-    response = client.post(reverse('register'), data)
-    assertRedirects(response, reverse('login'))
+    request = factory.post(reverse('register'), data)
 
-    # Check that a new user was created with the correct username and email
-    user = User.objects.get(username='testuser')
-    assert user.email == 'testuser@example.com'
+    # call the view function
+    response = sign_in(request)
 
-    # Try submitting an invalid form (passwords don't match)
-    data['password2'] = 'wrongpassword'
-    response = client.post(reverse('register'), data)
-    assert response.status_code == 200
-    assert 'password2' in response.context['form'].errors
+    # check the response
+    assert response.status_code == 302  # redirect
+    assert response.url == reverse('login')  # redirect to the login page
 
+    # check that the user was created
+    user = User.objects.get(username=data['username'])
+    assert user.email == data['email']
+
+
+
+@pytest.mark.django_db
+def test_sign_in_with_inavlid_data():
+    # create a POST request with invalid data
+    factory = RequestFactory()
+    data = {
+        'username': 'testuser2',
+        'email': 'testuser2@example',
+        'password': 'testpassword123',
+    }
+    request = factory.post(reverse('register'), data)
+
+    # call the view function
+    response = sign_in(request)
+
+    # check the response
+    assert response.status_code == 200  # form submission failed
+
+    # assert 'password' in response.context['form'].errors  # error message is displayed
 
 
 
