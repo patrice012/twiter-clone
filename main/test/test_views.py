@@ -63,7 +63,7 @@ def test_like_hx_views(client, user, tweet_form_data):
     assert t.likes_by.count() == 1
     assert user.id  in t.users_like_id
 
-    # test dislike action
+    # test unlike action
     res = client.get(f'http://localhost:8000/actions/like/{t_id}/')
     t = Tweet.objects.first()
     assert t.likes_by.count() == 0
