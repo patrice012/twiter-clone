@@ -5,6 +5,9 @@ from django.core.exceptions import ObjectDoesNotExist
 
 
 class RegisterForm(forms.ModelForm):
+    """
+    Create Register form
+    """
     class Meta:
         model = get_user_model()
         fields = ['username', 'email', 'password']
